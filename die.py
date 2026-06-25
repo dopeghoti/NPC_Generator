@@ -39,7 +39,7 @@ class ExplodingDie( Die ):
     def defuse( self ) -> None:
         self.exploding = False
 
-    def arm ( self ) -> None:
+    def arm( self ) -> None:
         self.exploding = True
 
     @property
@@ -85,6 +85,8 @@ class DupelessTableDie( TableDie ):
 
     def reset( self ) -> None:
         self.sides = self.starting_faces[:]
+
+# The standard RPG die set, provided for convenience
 
 class D4( Die ):
     def __init__( self ):
