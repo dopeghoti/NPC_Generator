@@ -6,13 +6,12 @@ class Name:
 
     def Phoneme( self, ending_consonant: bool = False ) -> str:
         suffix = ''
-        if ending_consonant: 
+        if ending_consonant:
             suffix = self.ConsonantDie()
         return self.ConsonantDie() + self.VowelDie() + suffix
 
-
     def __init__( self, given_name: str = None ) -> None:
-        if given_name: 
+        if given_name:
             self.name = given_name
         else:
             d2 = die.Die(2)
