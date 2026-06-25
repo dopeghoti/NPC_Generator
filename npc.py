@@ -182,7 +182,7 @@ class NPC:
                 self.have = 'have'
                 self.gender = None
                 self.to_be = 'are'
-        self.Name = npc_name
+        self.Name = str( npc_name )
         self.NameSuggestions = []
         if not self.Name:
             self.NameSuggestions = [ str( name.Name() ) for _ in range(3) ]
