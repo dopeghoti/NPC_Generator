@@ -182,10 +182,12 @@ class NPC:
                 self.have = 'have'
                 self.gender = None
                 self.to_be = 'are'
-        self.Name = str( npc_name )
         self.NameSuggestions = []
-        if not self.Name:
+        self.Name = None
+        if not npc_name:
             self.NameSuggestions = [ str( name.Name() ) for _ in range(3) ]
+        else:
+            self.Name = str( npc_name )
         self.Personality = OCEAN()
         self.Agenda = Agenda()
         self.Appearance = {
@@ -204,7 +206,9 @@ class NPC:
                 }
         if 'long' in self.Appearance['Pate Hair']['Length']:
             self.Appearance['Pate Hair']['Style'] = AppearanceDie('pate_style')()
-        if gender and gender.lower()[0] == 'm':
+        if self.gender and self.gender.lower()[0] == 'm': # Male characters might have facial hair
+            self.Appearance['Facial Hair']['Style'] = AppearanceDie('facial_hair')()
+        elif not self.gender and die.Die(2)(-1): # So too might characters without defined gender.  Toss a coin.
             self.Appearance['Facial Hair']['Style'] = AppearanceDie('facial_hair')()
         distinction_die = DistinctionDie()
         num_distinctions = random.choice ( [ 0,0,0,1,1,1,2,2,3 ] )
