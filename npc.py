@@ -10,7 +10,7 @@ class OCEAN:
                 [ 'narrow-minded', 'prejudiced', 'traditional', 'pragmatic', 'curious', 'inquisitive', 'adventurous' ] ]
         Conscientiousness = [
                 [ 'negligent', 'hedonistic', 'procrastinating', 'distracted', 'punctual', 'disciplined', 'ambitious' ],
-                [ 'irresponsible', 'impulsive', 'impatient', 'casual', 'patient', 'thorough', 'perservering' ],
+                [ 'irresponsible', 'impulsive', 'impatient', 'casual', 'patient', 'thorough', 'persevering' ],
                 [ 'careless', 'disorganized', 'unorganized', 'practical', 'responsible', 'efficient', 'methodical' ],
                 [ 'lazy', 'unreliable', 'indecisive', 'diligent', 'dependable', 'goal-oriented', 'perfectionist' ] ]
         Extraversion = [
@@ -28,8 +28,8 @@ class OCEAN:
         Neuroticism = [
                 [ 'serene', 'grounded', 'confident', 'relaxed', 'wary', 'sensitive', 'insecure' ],
                 [ 'stoic', 'calm', 'focused', 'concerned', 'tense', 'irritable', 'self-critical' ],
-                [ 'hardy', 'sensible', 'resilient', 'restless', 'anxious', 'moody', 'depressed' ],
-                [ 'poised', 'sensible', 'fickle', 'vulnerable', 'nervous', 'panicky' ] ]
+                [ 'hardy', 'adaptable', 'stable', 'restless', 'anxious', 'moody', 'depressed' ],
+                [ 'poised', 'sensible', 'resilient', 'fickle', 'vulnerable', 'nervous', 'panicky' ] ]
 
         dice = {
                 'Openness'        : die.TableDie( Openness[random.choice( range(4) ) ] ),
@@ -151,7 +151,7 @@ class AppearanceDie ( die.TableDie ):
             'eyes':        ( [2, 2, 1, 2, 2, 1],    ['light blue', 'blue', 'grey', 'brown', 'dark brown', 'green'] ),
             'pate_color':  ( [2, 3, 2, 1, 2],       ['blonde', 'brown', 'auburn', 'red', 'dark'] ),
             'pate_length': ( [2, 1, 2, 1],          ['short', 'shoulder-length', 'long', 'very long'] ),
-            'pate_style':  ( [2, 2, 1, 2, 2, 1],    ['loose', 'in a pony-tail', 'in a bun', 'braided', 'slicked-back', 'in dredlocks'] ),
+            'pate_style':  ( [2, 2, 1, 2, 2, 1],    ['loose', 'in a pony-tail', 'in a bun', 'braided', 'slicked-back', 'in dreadlocks'] ),
             'facial_hair': ( [5, 2, 1, 2, 1, 2],    ['clean-shaven', 'bearded', 'mustachioed', 'sideburnt', 'mutton-chopped', 'stubbled'] )
             }
 
@@ -219,6 +219,7 @@ class NPC:
         return {
                 'Name': self.Name if self.Name else '',
                 'NameSuggestions': self.NameSuggestions if not self.Name else [],
+                'Gender': self.gender,
                 'Personality': {
                     'Openness': self.Personality.Openness,
                     'Conscientiousness': self.Personality.Conscientiousness,
@@ -262,7 +263,7 @@ class NPC:
             r += f" worn {pate['Style']}."
         else:
             r += "."
-        if self.gender == 'm' and self.Appearance['Facial Hair']['Style']:
+        if self.Appearance['Facial Hair']['Style']:
             r += f'''
 
 {self.eir.capitalize()} face is {self.Appearance['Facial Hair']['Style']}.\n\n'''

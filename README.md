@@ -14,7 +14,7 @@ His face is stubbled.
 
 Distinguishing facial features include: pockmarked skin.
 
-He is adventurous, perservering, outgoing, manipulative, and self-critical.
+He is adventurous, persevering, outgoing, manipulative, and self-critical.
 
 His goal is to discover an artefact, but there are issues with an opposing faction.
 ```
